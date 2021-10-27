@@ -62,3 +62,11 @@
     }
   }
 }
+
+// default anchor color
+a:not([class*=color]) {
+  color: map-get($colors, primary);
+  &:active,&:visited,&:hover {
+    color: map-get($colors, primary);
+  }
+}

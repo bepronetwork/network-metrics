@@ -23,6 +23,7 @@
       "@public": ["public/*"],
       "@assets/*": ["public/assets/*"],
       "@components/*": ["components/*"],
+      "@icons/*": ["components/icons/*"],
       "@helpers/*": ["helpers/*"],
       "@pages/*": ["pages/*"],
       "@api/*": ["pages/api/*"],
