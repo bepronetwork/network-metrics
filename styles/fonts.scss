@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'fontRegular';
+  src: url('../public/assets/fonts/SpaceGrotesk-Regular.woff2') format('woff2'),
+  url('../public/assets/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url('../public/assets/fonts/Inter-Regular.ttf') format('ttf'),
+  url('../public/assets/fonts/Inter-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'fontRegular', sans-serif;
+  font-feature-settings: 'tnum' on, 'lnum' on, 'ss02' on, 'ss03' on, 'ss04' on;
+}
+
+@mixin heading() {
+  font-family: 'fontRegular', sans-serif;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: .01rem;
+}
+
+@for $index from 1 through 4 {
+  h#{$index} { @include heading; }
+}
+
+.caption,.caption-small { @include heading; }
+
+p,.p,.p-small {
+  font-family: 'Inter-Regular', sans-serif;
+  font-weight: 400;
+  line-height: 140%;
+  &-bold {
+    font-weight: 600;
+    line-height: 160%;
+    letter-spacing: .02rem;
+  }
+}
+
+button,.button,.small-info {
+  font-family: 'fontRegular', sans-serif;
+  font-weight: 600;
+  line-height: 100%;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
+
+button,.button { line-height: 100%; }
+.small-info { line-height: 130%; }
+
+h1 { font-size: 54px; }
+h2 { font-size: 42px; }
+h3 { font-size: 32px; }
+h4 { font-size: 21px; }
+.caption { font-size: 16px; }
+.caption-small,.p-small,.p-small-bold,button,.button { font-size: 12px; }
+p,.p { font-size: 14px; }
+.small-info { font-size: 9px; }

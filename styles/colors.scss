@@ -1,0 +1,64 @@
+@import "variables";
+
+@mixin propValue($prop, $value) {
+  #{$prop}: $value!important;
+}
+
+@mixin opacityLoop($prop, $color) {
+  @each $value in $opacities {
+    &-#{$value} {
+      @include propValue($prop, rgba($color, percentage($value)))
+    }
+  }
+}
+
+@mixin colorCss($colorName, $color, $propName) {
+  &-#{"" + $colorName} {
+    @include propValue($propName, $color);
+    &-hover:hover { @include propValue($propName, $color); }
+    &-op { @include opacityLoop($propName, $color) }
+  }
+}
+
+// text-color
+.color {
+  @each $colorName, $color in $colors {
+    @include colorCss($colorName, $color, color)
+  }
+}
+
+// background-color
+.bg {
+  @each $colorName, $color in $colors {
+    @include colorCss($colorName, $color, background-color)
+  }
+  &-transparent {
+    background-color: transparent;
+  }
+}
+
+// element opacity
+.opacity {
+  @each $value in $opacities {
+    &-#{$value} {
+      opacity: percentage($value);
+    }
+  }
+}
+
+// button background color hover and disable interaction
+.button,button {
+  &[class*=bg]:not([class*=hover]) {
+    @each $colorName, $color in $colors {
+      &.bg-#{"" + $colorName}:hover {background-color: darken($color, $hover-darken)!important;}
+      //&.color-#{"" + $colorName}:hover {color: darken($color, $hover-darken)!important;}
+    }
+    &:disabled,&.inactive {
+      cursor: not-allowed;
+      @each $colorName, $color in $colors {
+        &.bg-#{"" + $colorName} {background-color: adjust-color($color, $alpha: -.55)!important;}
+        &.color-#{"" + $colorName} {color: adjust-color($color, $alpha: -.55)!important;}
+      }
+    }
+  }
+}
