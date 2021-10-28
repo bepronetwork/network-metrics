@@ -26,7 +26,17 @@ body {
   h#{$index} { @include heading; }
 }
 
-.caption,.caption-small { @include heading; }
+.caption,.caption-small {
+  @include heading;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.caption {
+  line-height: 160%;
+  &-small { line-height: 140%; }
+}
+
 
 p,.p,.p-small {
   font-family: 'Inter-Regular', sans-serif;

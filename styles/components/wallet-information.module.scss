@@ -1,0 +1,9 @@
+@use "sass:math";
+@import "../variables";
+
+.container {
+  background-color: adjust-color(map-get($colors, white), $alpha: -(math.div(nth($opacities, 5), 100)));
+  margin: -19px -30px;
+  padding: 19px 30px;
+  width: 195px;
+}

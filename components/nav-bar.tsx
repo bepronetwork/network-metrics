@@ -3,6 +3,7 @@ import styles from '@styles/components/nav-bar.module.scss';
 import BeproLogo from '@icons/bepro-logo';
 import IconLinkExternal from '@icons/IconLinkExternal';
 import LinkButton from '@components/link-button';
+import WalletInformation from '@components/wallet-information';
 
 export default function NavBar() {
 
@@ -25,7 +26,7 @@ export default function NavBar() {
                   }}/>
     </div>
     <div className="ml-auto">
-
+      <WalletInformation />
     </div>
   </div>
 }
