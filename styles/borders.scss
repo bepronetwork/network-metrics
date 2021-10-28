@@ -36,7 +36,7 @@
   }
 
   @each $colorName, $color in $colors {
-    &-#{$colorName} {
+    &-#{"" + $colorName} {
       border-color: $color!important;
     }
   }
