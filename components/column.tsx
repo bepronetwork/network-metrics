@@ -1,6 +1,6 @@
 import {PropsWithChildren} from 'react';
 
-interface Props {size?: string, className?: string}
+interface Props {size?: number, className?: string}
 type ColumnProps =  PropsWithChildren<Props>;
 
 export default function Column({children, size, className = ``}: ColumnProps) {

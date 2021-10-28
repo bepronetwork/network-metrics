@@ -27,10 +27,10 @@ export default function HomePage() {
                 <Circle className="color-white bg-primary" width={24} height={24}><IconUSDC /></Circle>
               </h4>
               <Row>
-                <Column className="text-center border-right border-light-dark-gray py-2 px-0">4.2M</Column>
-                <Column className="text-center border-right border-light-dark-gray py-2 px-0">42K</Column>
-                <Column className="text-center border-right border-light-dark-gray py-2 px-0">$4.2M</Column>
-                <Column className="text-center py-2 px-0">4.2%</Column>
+                <Column size={3} className="text-center border-right border-light-dark-gray py-2 px-0">4.2M</Column>
+                <Column size={3} className="text-center border-right border-light-dark-gray py-2 px-0">42K</Column>
+                <Column size={3} className="text-center border-right border-light-dark-gray py-2 px-0">$4.2M</Column>
+                <Column size={3} className="text-center py-2 px-0">4.2%</Column>
               </Row>
             </Column>
             <Column>hey</Column>
