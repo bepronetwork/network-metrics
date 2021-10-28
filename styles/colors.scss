@@ -1,29 +1,41 @@
+@use "sass:math";
 @import "variables";
 
 @mixin propValue($prop, $value) {
   #{$prop}: $value!important;
 }
 
-@mixin opacityLoop($prop, $color) {
+@mixin opacityLoop($prop, $color, $append: false) {
   @each $value in $opacities {
     &-#{$value} {
-      @include propValue($prop, rgba($color, percentage($value)))
+      @if $append {
+        #{$append} { @include propValue($prop, adjust-color($color, $alpha: -(math.div($value, 100)))) }
+      }
+      @else {
+        @include propValue($prop, adjust-color($color, $alpha: -(math.div($value, 100))))
+      }
     }
   }
 }
 
-@mixin colorCss($colorName, $color, $propName) {
+@mixin colorCss($colorName, $color, $propName, $svg: false) {
   &-#{"" + $colorName} {
     @include propValue($propName, $color);
     &-hover:hover { @include propValue($propName, $color); }
     &-op { @include opacityLoop($propName, $color) }
+
+    @if $svg {
+      path { @include propValue(fill, $color); }
+      &-hover:hover path { @include propValue(fill, $color); }
+      &-op { @include opacityLoop(fill, $color, path) }
+    }
   }
 }
 
 // text-color
 .color {
   @each $colorName, $color in $colors {
-    @include colorCss($colorName, $color, color)
+    @include colorCss($colorName, $color, color, true)
   }
 }
 
@@ -56,8 +68,8 @@
     &:disabled,&.inactive {
       cursor: not-allowed;
       @each $colorName, $color in $colors {
-        &.bg-#{"" + $colorName} {background-color: adjust-color($color, $alpha: -.55)!important;}
-        &.color-#{"" + $colorName} {color: adjust-color($color, $alpha: -.55)!important;}
+        &.bg-#{"" + $colorName} {background-color: adjust-color($color, $alpha: $disable-alpha)!important;}
+        &.color-#{"" + $colorName} {color: adjust-color($color, $alpha: $disable-alpha)!important;}
       }
     }
   }

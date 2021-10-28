@@ -8,6 +8,7 @@ button,.button {
   padding: 12px 20px;
   border-radius: 20px;
   border: none;
+  cursor: pointer;
 
   svg,i {
     &:not(:only-child) {

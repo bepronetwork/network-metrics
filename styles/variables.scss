@@ -1,3 +1,16 @@
+$opacities: (10, 30, 40, 70);
+
+$hover-darken: 20%;
+$disable-alpha: -.55;
+
+$background-color: #0D0F19;
+$background-shadow: #151720;
+
+$layout-width: 960px;
+$column-margin: 2rem;
+$max-columns: 12;
+
+
 $colors: (
         primary: #4250E4,
         secondary: #FD8B2A,
@@ -12,12 +25,6 @@ $colors: (
         dark-gray: #20222b,
         light-dark-gray: #434758,
         gray: #C4C7D3,
+        body: $background-color,
+        shadow: $background-shadow,
 );
-
-$opacities: (10, 30, 40, 70);
-
-$hover-darken: 20%;
-$inactive-lighten: 35%;
-
-$background-color: #0D0F19;
-$background-shadow: #151720;

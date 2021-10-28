@@ -1,0 +1,24 @@
+@use "sass:math";
+@import "variables";
+
+.container {
+  margin: 0 auto;
+  max-width: $layout-width;
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    .col {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 1px;
+      margin: $column-margin;
+
+      @for $index from 1 through $max-columns {
+        &-#{$index} {
+          flex: 0 0 auto;
+          max-width: percentage(math.div($index,$max-columns))
+        }
+      }
+    }
+  }
+}

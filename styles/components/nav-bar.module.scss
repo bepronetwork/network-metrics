@@ -1,0 +1,17 @@
+@import "../variables";
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-height: 70px;
+  height: 70px;
+  background-color: map-get($colors, body);
+
+  padding: 19px 30px;
+
+  .logo svg {
+    width: 103px;
+    height: 32px;
+  }
+}

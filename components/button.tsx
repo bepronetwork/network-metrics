@@ -1,13 +1,18 @@
-import React, {ButtonHTMLAttributes} from 'react';
+import React, {ButtonHTMLAttributes, ReactNode} from 'react';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string;
   background?: string;
   transparent?: boolean;
+  label?: string;
+  icon?: ReactNode;
+  iconBefore?: boolean;
 }
 
-export default function Button({
-                                 children,
+export default function Button({ children,
+                                 label = ``,
+                                 icon = null,
+                                 iconBefore = true,
                                  color = 'white',
                                  background = `primary`,
                                  transparent,
@@ -19,12 +24,18 @@ export default function Button({
     let append = className;
 
     if (transparent)
-      background += 'bg-transparent'
+      background += ' bg-transparent'
 
     return `button color-${color} bg-${background} ${append}`
   }
 
+  function renderLabelIcon() {
+    return <>{iconBefore && icon || ``}<span>{label}</span>{!iconBefore && icon || ``}</>
+  }
+
   return <>
-    <button className={getClass()} {...rest}>{children}</button>
+    <button className={getClass()} {...rest}>
+      {label ? renderLabelIcon() : children}
+    </button>
   </>
 }
