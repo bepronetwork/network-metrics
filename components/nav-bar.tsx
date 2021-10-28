@@ -17,7 +17,7 @@ export default function NavBar() {
       <LinkButton label="Metrics" href="/metrics"
                   buttonProps={{color: `white-op-30 color-white-hover`, background: `body`}}/>
 
-      <LinkButton label="App" href="//development.bepro.network" blank={true}
+      <LinkButton label="App" href="https://development.bepro.network" blank={true}
                   buttonProps={{
                     color: `white-op-30 color-white-hover`,
                     background: `body`,

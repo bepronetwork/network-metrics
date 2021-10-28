@@ -7,8 +7,11 @@ $background-color: #0D0F19;
 $background-shadow: #151720;
 
 $layout-width: 960px;
-$column-margin: 2rem;
+$column-padding: 2rem;
 $max-columns: 12;
+$gutter: 10; //px
+
+$directions: ('left': 'l', 'right': 'r', 'top': 't', 'bottom': 'b') !default;
 
 
 $colors: (

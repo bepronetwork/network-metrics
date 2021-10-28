@@ -1,0 +1,14 @@
+@import "../variables";
+
+.progressBar {
+  height: 4px;
+  background-color: map-get($colors, dark-gray);
+  .progress {
+    height: 4px;
+    background-color: map-get($colors, primary);
+    &:not([data-width="100"]) {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+}

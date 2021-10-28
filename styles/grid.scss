@@ -6,19 +6,40 @@
   max-width: $layout-width;
   .row {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    @media screen and (max-width: 959px) {
+      flex-wrap: wrap;
+    }
+
     .col {
+      display: flex;
       flex-grow: 1;
       flex-shrink: 1;
       flex-basis: 1px;
-      margin: $column-margin;
+      flex-direction: column;
+      padding: $column-padding;
+      margin: #{$gutter}px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.rounded {
+        border-radius: 8px;
+      }
 
       @for $index from 1 through $max-columns {
         &-#{$index} {
-          flex: 0 0 auto;
+          flex: 1 1 auto;
           max-width: percentage(math.div($index,$max-columns))
         }
       }
     }
   }
 }
+

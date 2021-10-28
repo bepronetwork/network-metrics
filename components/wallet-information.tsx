@@ -9,7 +9,7 @@ export default function WalletInformation() {
         <div><WalletAddress address="0x0e6B6ae33f345E1CbAc096a2644f7748F347d218" /></div>
         <div><span className="caption-small">999 MOVR</span></div>
       </div>
-      <div><Circle width={38} height={38} className="bg-body d-flex justify-content-center align-items-center">hey</Circle></div>
+      <div><Circle width={38} height={38} className="bg-body">hey</Circle></div>
     </div>
   </div>
 }

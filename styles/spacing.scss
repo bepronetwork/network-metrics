@@ -1,6 +1,7 @@
+@import "variables";
+
 $spacers: ('p': 'padding', 'm': 'margin') !default;
 $positions: absolute, relative, sticky !default;
-$directions: ('left': 'l', 'right': 'r', 'top': 't', 'bottom': 'b') !default;
 $dimensions: ('0': 0, '1': .25, '2': .5, '3': 1, '4': 2, '5': 3) !default;
 
 // .m|p[t|r|l|b|x|y]-[0...5]

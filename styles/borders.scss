@@ -1,0 +1,43 @@
+@import "variables";
+
+@mixin borderProp($prop, $size: 1px, $color: #E0E0E0) {
+  border-#{$prop}: $size solid $color;
+}
+
+.border {
+  @each $prop, $alias in $directions {
+    &-#{$prop} { @include borderProp($prop); }
+  }
+  @each $dir, $values in (x: (right, left), y: (top, bottom)) {
+    &-#{$dir} {
+      @each $value in $values {
+        @include borderProp($value);
+      }
+    }
+  }
+
+  &-full {
+    border-color: #E0E0E0;
+    &:not(.border-2x) { border-width: 1px };
+    border-style: solid;
+  }
+
+  &-x2 { border-width: 2px; }
+
+  &-dashed {
+    border-style: dashed;
+  }
+
+  &-rounded {
+    border-radius: 4px;
+    &-full {
+      border-radius: 100%;
+    }
+  }
+
+  @each $colorName, $color in $colors {
+    &-#{$colorName} {
+      border-color: $color!important;
+    }
+  }
+}
