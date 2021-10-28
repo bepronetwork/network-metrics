@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import Button, {ButtonProps} from '@components/button';
+import {ButtonProps} from '@components/button';
+import renderLabelIcon from '@x-hooks/render-label-icon';
 
 interface LinkButtonProps {
   label: string;
@@ -14,15 +15,13 @@ export default function LinkButton({
                                      href = `/`,
                                      passHref = true,
                                      buttonProps = {},
-                                     blank = false}: LinkButtonProps) {
+                                     blank = false
+                                   }: LinkButtonProps) {
 
-  function renderButton(label = ``, rest: ButtonProps) {
-    return <Button {...rest}>{label}</Button>
-  }
-
-  function renderAnchor(label = ``, {color, background, icon}: ButtonProps) {
-    return <a target="_blank" className={`button color-${color} bg-${background}`}><span>{label}</span> {icon}</a>
-  }
-
-  return <Link href={href} passHref={passHref}>{!blank && renderButton(label, buttonProps) || renderAnchor(label, buttonProps)}</Link>
+  return <Link href={href} passHref={passHref}>
+    <a target={blank ? `_blank` : `_self`}
+       className={`button color-${buttonProps?.color} bg-${buttonProps?.background}`}>
+      {renderLabelIcon(label, buttonProps?.icon, buttonProps?.iconBefore)}
+    </a>
+  </Link>
 }

@@ -1,4 +1,5 @@
 import React, {ButtonHTMLAttributes, ReactNode} from 'react';
+import renderLabelIcon from '@x-hooks/render-label-icon';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string;
@@ -29,13 +30,9 @@ export default function Button({ children,
     return `button color-${color} bg-${background} ${append}`
   }
 
-  function renderLabelIcon() {
-    return <>{iconBefore && icon || ``}<span>{label}</span>{!iconBefore && icon || ``}</>
-  }
-
   return <>
     <button className={getClass()} {...rest}>
-      {label ? renderLabelIcon() : children}
+      {label ? renderLabelIcon(label, icon, iconBefore) : children}
     </button>
   </>
 }
