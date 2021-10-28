@@ -4,7 +4,7 @@ import Row from '@components/row';
 import Column from '@components/column';
 
 export default function TransactionalData() {
-  return <Column className="bg-dark-gray">
+  return <Column className="bg-dark-gray rounded">
     <h4 className="d-flex justify-content-between color-white mb-3">
       <span>Transactional</span>
       <Circle className="color-white bg-primary" width={24} height={24}><IconUSDC /></Circle>
