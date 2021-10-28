@@ -13,6 +13,6 @@ export default function ConnectButton({children}: {children: ReactNode}) {
                    background="white bg-white-hover"
                    label="connect"
                    iconBefore={false}
-                   icon={<Image src={metamaskLogo} />} />
+                   icon={<Image alt="metamask-logo" src={metamaskLogo} />} />
   return <>{children}</>
 }
