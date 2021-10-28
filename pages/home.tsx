@@ -1,30 +1,45 @@
-import Container from '@components/container';
 import Row from '@components/row';
 import Column from '@components/column';
-import NavBar from '@components/nav-bar';
-import PageHeader from '@components/page-header';
 import CirculatingSupply from '@components/circulating-supply';
 import DistributedEpoch from '@components/distributed-epoch';
-import TransactionalData from '@components/transactional-data';
+import Metric, {makeMetricItem, MetricItem} from '@components/metric';
+import {useEffect, useState} from 'react';
+import RewardMetrics from '@components/reward-metrics';
 
 export default function HomePage() {
+  const [transactionalMetrics, setTransactionalMetrics] = useState<MetricItem[]>([]);
+  const [liquidityMetrics, setLiquidityMetrics] = useState<MetricItem[]>([]);
+
+  useEffect(() => {
+    setTransactionalMetrics([
+                              makeMetricItem(`4.2M`, `$USDC`),
+                              makeMetricItem(`42K`, `$BEPRO`),
+                              makeMetricItem(`42M`, `total`),
+                              makeMetricItem(`4.2%`, `your stake`),])
+
+    setLiquidityMetrics([
+                          makeMetricItem(`42M`, `$USDC`),
+                          makeMetricItem(`4.2K`, `$BEPRO`),
+                          makeMetricItem(`42`, `total`),
+                          makeMetricItem(`.42%`, `your stake`),])
+  }, []);
+
   return <>
-    <NavBar />
-    <PageHeader />
-    <Container background="body">
-      <Row>
-        <CirculatingSupply />
-        <DistributedEpoch />
-      </Row>
-      <Row>
-        <Column className="bg-shadow rounded">
-          <h4 className="mb-3">Protocol metrics</h4>
-          <Row>
-            <TransactionalData />
-            <Column>hey</Column>
-          </Row>
-        </Column>
-      </Row>
-    </Container>
+    <Row>
+      <CirculatingSupply/>
+      <DistributedEpoch/>
+    </Row>
+    <Row>
+      <Column className="bg-shadow rounded">
+        <h4 className="mb-3">Protocol metrics</h4>
+        <Row>
+          <Metric title="Transactional" metrics={transactionalMetrics}/>
+          <Metric title="Liquidity Locked" metrics={liquidityMetrics}/>
+        </Row>
+      </Column>
+    </Row>
+    <Row>
+      <RewardMetrics />
+    </Row>
   </>
 }

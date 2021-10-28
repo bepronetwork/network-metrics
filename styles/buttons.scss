@@ -10,23 +10,23 @@ button,.button {
   border: none;
   cursor: pointer;
 
-  svg,i {
+  svg,i,span[style] {
     &:not(:only-child) {
       &:not(:last-child) {
-        margin-right: 8px;
+        margin-right: 8px!important;
       }
       &:last-child {
-        margin-left: 8px;
+        margin-left: 8px!important;
       }
-      width: $small-icon;
-      height: $small-icon;
-      margin-top: -2px;
-      margin-bottom: -2px;
+      width: $small-icon!important;
+      height: $small-icon!important;
+      margin-top: -2px!important;
+      margin-bottom: -2px!important;
     }
 
     &:only-child {
-      width: $only-child;
-      height: $only-child;
+      width: $only-child!important;
+      height: $only-child!important;
     }
   }
 

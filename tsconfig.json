@@ -20,7 +20,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@public": ["public/*"],
+      "@public/*": ["public/*"],
       "@assets/*": ["public/assets/*"],
       "@components/*": ["components/*"],
       "@icons/*": ["components/icons/*"],
