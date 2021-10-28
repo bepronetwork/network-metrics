@@ -6,6 +6,7 @@
   .progress {
     height: 4px;
     background-color: map-get($colors, primary);
+    transition: width .3s cubic-bezier(.45,.05,.55,.95);
     &:not([data-width="100"]) {
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
