@@ -20,7 +20,7 @@ export default function useBEPRO() {
   const [stakedAmount, setStakedAmount] = useState(0);
   const [walletAmount, setWalletAmount] = useState(0);
   const [widthdrawableAmount, setWidthdrawableAmount] = useState(0);
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState(``);
 
   async function login() {
     let success;
