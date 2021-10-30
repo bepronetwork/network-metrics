@@ -61,6 +61,7 @@ export default function useBEPRO() {
   return {
     currentAddress,
     balance,
-    login
+    login,
+    web3: bepro.web3
   }
 }
