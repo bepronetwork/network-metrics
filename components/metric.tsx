@@ -25,7 +25,7 @@ export default function Metric({title = ``, metrics = []}: MetricProps) {
     return <DataBit key={i} border={i < metrics.length - 1} caption={caption} smallCaption={smallCaption} />
   }
 
-  return <Column className="bg-dark-gray rounded">
+  return <Column className="bg-dark-gray">
     <h4 className="d-flex justify-content-between color-white mb-3">
       <span>{title}</span>
       <Circle className="color-white bg-primary" width={24} height={24}><IconUSDC /></Circle>

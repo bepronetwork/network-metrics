@@ -10,6 +10,7 @@ const networkOptions = {
 
 const bepro = new Application(options);
 const network = new Network(networkOptions);
+let started = false;
 
 export default function useBEPRO() {
   const [currentAddress, setCurrentAddress] = useState(``);
@@ -19,7 +20,7 @@ export default function useBEPRO() {
   const [rewardPoolAmount, setRewardPoolAmount] = useState(0);
   const [stakedAmount, setStakedAmount] = useState(0);
   const [walletAmount, setWalletAmount] = useState(0);
-  const [widthdrawableAmount, setWidthdrawableAmount] = useState(0);
+  const [claimAmount, setClaimAmount] = useState(0);
   const [balance, setBalance] = useState(``);
 
   async function login() {
@@ -39,14 +40,21 @@ export default function useBEPRO() {
   }
 
   function start() {
-    if (!bepro.web3)
-      bepro.start();
-    else bepro.getAddress().then(setCurrentAddress);
+    (async function startOrLogin() {
+
+      if (!started) {
+        await bepro.start();
+        await network.login();
+        await network.__assert();
+        started = true;
+      } else await bepro.getAddress().then(setCurrentAddress);
+
+      setSupply(await network.getSettlerTokenContract().totalSupply());
+
+    }())
   }
 
-  useEffect(start, []);
-
-  useEffect(() => {
+  function updateCurrentAddress() {
     (async function update() {
       if (!currentAddress)
         return;
@@ -54,13 +62,20 @@ export default function useBEPRO() {
       const {utils: {fromWei}, eth: {getBalance}} = bepro.web3;
 
       setBalance(fromWei(await getBalance(currentAddress), `ether`));
-    }())
+    }());
 
-  }, [currentAddress]);
+  }
+
+  function updateCirculatingSupply() {}
+
+  useEffect(start, []);
+  useEffect(updateCurrentAddress, [currentAddress]);
 
   return {
     currentAddress,
     balance,
+    supply,
+    claimAmount,
     login,
     web3: bepro.web3
   }

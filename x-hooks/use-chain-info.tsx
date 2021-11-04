@@ -15,6 +15,8 @@ interface ChainInfo {
   explorers : {name: string; url: string; standard: string}[]
 }
 
+const CHAINS: ChainInfo[] = [];
+
 export default function useChainInfo() {
   const [chains, setChains] = useState<ChainInfo[]>([]);
   const [currentChain, setCurrentChain] = useState<ChainInfo>(null);
@@ -29,9 +31,13 @@ export default function useChainInfo() {
 
   useEffect(() => {
     (async function getChains() {
-      if (!chains.length)
+      if (!CHAINS.length)
         axios.get<ChainInfo[]>(`https://chainid.network/chains.json`)
-             .then(({data}) => setChains(data));
+             .then(({data}) => {
+               setChains(data);
+               CHAINS.splice(0, CHAINS.length, ...data);
+             });
+      else setChains(CHAINS);
     }());
 
   }, [])

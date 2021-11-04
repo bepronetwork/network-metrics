@@ -30,7 +30,7 @@ export default function HomePage() {
       <DistributedEpoch/>
     </Row>
     <Row>
-      <Column className="bg-shadow rounded">
+      <Column className="bg-shadow">
         <h4 className="mb-3">Protocol metrics</h4>
         <Row>
           <Metric title="Transactional" metrics={transactionalMetrics}/>
