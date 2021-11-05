@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {Network, Application} from 'bepro-js';
+import {Network, Application, ERC20Contract} from 'bepro-js';
 
 const options = {opt: {web3Connection: process.env.NEXT_PUBLIC_WEB3_CONNECTION},}
 
@@ -10,6 +10,7 @@ const networkOptions = {
 
 const bepro = new Application(options);
 const network = new Network(networkOptions);
+const beproToken = new ERC20Contract({contractAddress: process.env.NEXT_PUBLIC_BEPRO_TOKEN, ...options})
 let started = false;
 
 export default function useBEPRO() {
@@ -44,12 +45,18 @@ export default function useBEPRO() {
 
       if (!started) {
         await bepro.start();
-        await network.login();
-        await network.__assert();
+        // await network.start();
+        // await beproToken.start();
+
         started = true;
       } else await bepro.getAddress().then(setCurrentAddress);
 
-      setSupply(await network.getSettlerTokenContract().totalSupply());
+
+
+
+      // console.log(await beproToken.params.contract.contract.methods.totalSupply().call(),);
+      //
+      // setSupply(await beproToken.params.contract.contract.methods.totalSupply().call());
 
     }())
   }
@@ -65,8 +72,6 @@ export default function useBEPRO() {
     }());
 
   }
-
-  function updateCirculatingSupply() {}
 
   useEffect(start, []);
   useEffect(updateCurrentAddress, [currentAddress]);
