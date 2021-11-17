@@ -3,8 +3,6 @@ import Row from '@components/row';
 
 export default function RewardMetrics() {
 
-  function renderRewardMetric() {}
-
   return <Column className="bg-shadow">
     <h4 className="mb-3">Rewards Metrics</h4>
     <div className="caption-small">Earn rewards for using and staking on the bepro network PROTOCOL</div>
