@@ -35,9 +35,10 @@ export default function useBEPRO() {
      }
 
      if (!success)
-       return;
+       return false;
 
      setCurrentAddress(await bepro.getAddress());
+     return true;
   }
 
   function start() {
@@ -82,6 +83,6 @@ export default function useBEPRO() {
     supply,
     claimAmount,
     login,
-    web3: bepro.web3
+    web3: bepro.web3,
   }
 }

@@ -6,11 +6,28 @@ import DistributedEpoch from '@components/distributed-epoch';
 import Metric, {makeMetricItem, MetricItem} from '@components/metric';
 import {useEffect, useState} from 'react';
 import RewardMetrics from '@components/reward-metrics';
+import {useRouter} from 'next/router';
+import useBEPRO from '@x-hooks/use-bepro';
 
 export default function AccountPage() {
   const [transactionalMetrics, setTransactionalMetrics] = useState<MetricItem[]>([]);
+  const {currentAddress, login} = useBEPRO();
+  const router = useRouter();
+
 
   useEffect(() => {
+    if (!currentAddress) {
+      login()
+           .then(logged => {
+             console.log(`logged?`, logged);
+             !logged && router.push(`/`);
+           })
+           .catch(e => {
+             console.log(`E`, e)
+           })
+      return;
+    }
+
     setTransactionalMetrics([
                               makeMetricItem(`4.2M`, `$USDC`),
                               makeMetricItem(`42K`, `$BEPRO`),

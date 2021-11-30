@@ -1,5 +1,4 @@
 import styles from '@styles/components/page-header.module.scss';
-import {Head} from 'next/document';
 import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 
