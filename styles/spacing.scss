@@ -35,8 +35,8 @@ $dimensions: ('0': 0, '1': .25, '2': .5, '3': 1, '4': 2, '5': 3) !default;
         @each $amount, $multiplier in $dimensions {
           &-#{$amount} { #{$prop}-#{$dir}: #{$multiplier}rem!important; }
           &n-#{$amount} { #{$prop}-#{$dir}: -#{$multiplier}rem!important; }
-          &-auto { #{$prop}-#{$dir}: auto!important; }
         }
+        &-auto { #{$prop}-#{$dir}: auto!important; }
       }
     }
 
@@ -70,12 +70,10 @@ $dimensions: ('0': 0, '1': .25, '2': .5, '3': 1, '4': 2, '5': 3) !default;
   @each $display in (flex, block, inline, inline-block, inline-flex) {
     &-#{$display} { display: $display!important; }
   }
+}
 
-  &-flex {
-    .no-grow {
-      flex-grow: 0;
-    }
-  }
+.no-grow {
+  flex-grow: 0!important;
 }
 
 .justify-content {

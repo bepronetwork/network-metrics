@@ -8,7 +8,6 @@ import ConnectButton from '@components/connect-button';
 
 export default function NavBar() {
 
-
   return <div className={styles.navbar}>
     <div className={styles.logo}><BeproLogo white={true}/></div>
     <div className="d-flex justify-content-center align-items-center ml-4">

@@ -1,5 +1,5 @@
 import {ReactNode} from 'react';
 
-export default function Row({children}: {children: ReactNode}) {
-  return <div className="row">{children}</div>
+export default function Row({children, className = ''}: {children: ReactNode, className?: string}) {
+  return <div className={`row ${className}`}>{children}</div>
 }

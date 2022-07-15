@@ -36,7 +36,17 @@
       @for $index from 1 through $max-columns {
         &-#{$index} {
           flex: 1 1 auto;
-          max-width: percentage(math.div($index,$max-columns))
+          padding: $column-padding;
+          margin: #{$gutter}px;
+          max-width: percentage(math.div($index,$max-columns));
+
+          &:first-child {
+            margin-left: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+
         }
       }
     }

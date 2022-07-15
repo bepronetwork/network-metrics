@@ -1,6 +1,6 @@
 import {ReduceAction, ReduceActor} from '@interfaces/context';
-import {ReduceActionNames} from '@interfaces/enums/reduce-action-names';
 import {GlobalApplicationState} from '@interfaces/global-application-state';
+import {ReduceActionNames} from '@interfaces/enums/reduce-action-names';
 
 const ReduceActions: ReduceAction[] = [];
 
